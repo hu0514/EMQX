@@ -5,6 +5,7 @@ docker build -t emqx:3.2.0 .
 
 
 启动emqx容器
+
 docker run -d \
     --name emqx31 \
     --network host \
