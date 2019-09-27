@@ -1,10 +1,15 @@
+镜像构建
+将Dockerfile和files文件夹放在同一目录下并执行构建命令
+docker build -t emqx:3.2.0 .
+
+
 启动emqx容器
 docker run -d \
     --name emqx31 \
     --network host \
     -e "EMQX_NAME=node1" \
     -e "EMQX_HOST=172.31.59.231" \
-    emqx/emqx:v3.1.0
+    emqx/emqx:v3.2.0
 
 
 控制台访问
@@ -58,14 +63,9 @@ docker run -d \
     -e "CLUSTER_ETCD_SERVER=http://172.31.59.231:2379" \
     -e "CLUSTER_ETCD_PREFIX=emqxcl" \
     -e "CLUSTER_ETCD_NODE_TTL=1m" \
-    emqx:test
+    emqx:3.2.0
 
 注：
-    emqx_host填写自身IP
-    docker exec -it emqx31 sh 进入服务器修改集群自动发现配置
-
-    集群发现策略为 etcd:
-
     cluster.discovery = etcd
     etcd 服务器列表，以 , 进行分隔:
 
