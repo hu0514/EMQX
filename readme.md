@@ -67,21 +67,21 @@ docker run -d \
 
 注：
     cluster.discovery = etcd
-    etcd 服务器列表，以 , 进行分隔:
-
+    etcd 服务器列表，以 , 进行分隔
+    
     cluster.etcd.server = http://127.0.0.1:2379
-    用于 etcd 中节点路径的前缀，集群中的每个节点都会在 etcd 创建以下路径: v2/keys/<prefix>/<cluster.name>/<node.name>:
+    用于 etcd 中节点路径的前缀，集群中的每个节点都会在etcd下创建v2/keys/<prefix>/<cluster.name>/<node.name>目录
 
     cluster.etcd.prefix = emqxcl
+
     etcd 中节点的 TTL:
-
     cluster.etcd.node_ttl = 1m
-    包含客户端私有 PEM 编码密钥文件的路径:
 
+    客户端私有PEM编码密钥
     cluster.etcd.ssl.keyfile = etc/certs/client-key.pem
-    包含客户端证书文件的路径:
 
+    客户端证书文件
     cluster.etcd.ssl.certfile = etc/certs/client.pem
-    包含 PEM 编码的CA证书文件的路径:
-
+    
+    PEM编码的CA证书文件
     cluster.etcd.ssl.cacertfile = etc/certs/ca.pem
