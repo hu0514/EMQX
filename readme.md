@@ -33,8 +33,8 @@ EMQ X 环境变量
 #发现策略：etcd
 
 启动etcd服务器
-docker run \
-  -d \
+
+docker run -d \
   --network host \
   --name etcd \
   gcr.io/etcd-development/etcd:latest \
@@ -57,6 +57,7 @@ docker run \
 
 启动emqx服务器
 启动emqx容器
+
 docker run -d \
     --name emqx2 \
     --network test \
