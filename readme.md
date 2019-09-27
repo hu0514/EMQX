@@ -1,4 +1,5 @@
 镜像构建
+
 将Dockerfile和files文件夹放在同一目录下并执行构建命令
 docker build -t emqx:3.2.0 .
 
@@ -65,7 +66,8 @@ docker run -d \
     -e "CLUSTER_ETCD_NODE_TTL=1m" \
     emqx:3.2.0
 
-注：
+注
+
 cluster.discovery = etcd
 etcd 服务器列表，以 , 进行分隔
     
