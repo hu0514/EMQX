@@ -5,11 +5,13 @@ docker build -t emqx:3.2.0 .
 
 启动emqx容器
 docker run -d \
+    --restart always \
     --name emqx31 \
     --network host \
-    -e "EMQX_NAME=node1" \
-    -e "EMQX_HOST=172.31.59.231" \
-    emqx/emqx:v3.2.0
+    -e "EMQX_NAME=test" \
+    -e "EMQX_HOST=127.0.0.1" \
+    -e "EMQX_NODE_NAME=emqx@47.52.230.165" \
+    18817810841/emqx:3.2.0
 
 
 控制台访问
@@ -34,6 +36,7 @@ EMQ X 环境变量
 启动etcd服务器
 docker run \
   -d \
+  --restart always \
   --network host \
   --name etcd \
   gcr.io/etcd-development/etcd:latest \
@@ -57,13 +60,14 @@ docker run \
 启动emqx服务器
 启动emqx容器
 docker run -d \
+    --restart always \
     --name emqx2 \
     --network test \
     -e "CLUSTER_DISCOVERY=etcd" \
     -e "CLUSTER_ETCD_SERVER=http://172.31.59.231:2379" \
     -e "CLUSTER_ETCD_PREFIX=emqxcl" \
     -e "CLUSTER_ETCD_NODE_TTL=1m" \
-    emqx:3.2.0
+    18817810841/emqx:3.2.0
 
 注：
 cluster.discovery = etcd
@@ -85,3 +89,18 @@ cluster.etcd.ssl.certfile = etc/certs/client.pem
     
 PEM编码的CA证书文件
 cluster.etcd.ssl.cacertfile = etc/certs/ca.pem
+
+EMQ X 节点集群使用的 TCP 端口:
+
+4369	集群节点发现端口
+5369	集群节点PRC通道
+6369	集群节点控制通道
+
+EMQ X 默认开启的 MQTT 服务 TCP 端口:
+
+1883	MQTT 协议端口
+8883	MQTT/SSL 端口
+8083	MQTT/WebSocket 端口
+8084	MQTT/WebSocket/SSL 端口
+8080	管理API 端口
+18083	Dashboard 端口
