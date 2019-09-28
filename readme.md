@@ -36,14 +36,9 @@ EMQ X 环境变量
 #发现策略：etcd
 
 启动etcd服务器
-<<<<<<< HEAD
-docker run \
-  -d \
-  --restart always \
-=======
 
 docker run -d \
->>>>>>> origin/master
+  --restart always \
   --network host \
   --name etcd \
   gcr.io/etcd-development/etcd:latest \
@@ -98,7 +93,7 @@ cluster.etcd.ssl.certfile = etc/certs/client.pem
     
 PEM编码的CA证书文件
 cluster.etcd.ssl.cacertfile = etc/certs/ca.pem
-<<<<<<< HEAD
+
 
 EMQ X 节点集群使用的 TCP 端口:
 
@@ -114,5 +109,3 @@ EMQ X 默认开启的 MQTT 服务 TCP 端口:
 8084	MQTT/WebSocket/SSL 端口
 8080	管理API 端口
 18083	Dashboard 端口
-=======
->>>>>>> origin/master
