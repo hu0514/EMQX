@@ -1,9 +1,11 @@
 镜像构建
+
 将Dockerfile和files文件夹放在同一目录下并执行构建命令
 docker build -t emqx:3.2.0 .
 
 
 启动emqx容器
+
 docker run -d \
     --restart always \
     --name emqx31 \
@@ -34,9 +36,14 @@ EMQ X 环境变量
 #发现策略：etcd
 
 启动etcd服务器
+<<<<<<< HEAD
 docker run \
   -d \
   --restart always \
+=======
+
+docker run -d \
+>>>>>>> origin/master
   --network host \
   --name etcd \
   gcr.io/etcd-development/etcd:latest \
@@ -59,6 +66,7 @@ docker run \
 
 启动emqx服务器
 启动emqx容器
+
 docker run -d \
     --restart always \
     --name emqx2 \
@@ -69,7 +77,8 @@ docker run -d \
     -e "CLUSTER_ETCD_NODE_TTL=1m" \
     18817810841/emqx:3.2.0
 
-注：
+注
+
 cluster.discovery = etcd
 etcd 服务器列表，以 , 进行分隔
     
@@ -89,6 +98,7 @@ cluster.etcd.ssl.certfile = etc/certs/client.pem
     
 PEM编码的CA证书文件
 cluster.etcd.ssl.cacertfile = etc/certs/ca.pem
+<<<<<<< HEAD
 
 EMQ X 节点集群使用的 TCP 端口:
 
@@ -104,3 +114,5 @@ EMQ X 默认开启的 MQTT 服务 TCP 端口:
 8084	MQTT/WebSocket/SSL 端口
 8080	管理API 端口
 18083	Dashboard 端口
+=======
+>>>>>>> origin/master
